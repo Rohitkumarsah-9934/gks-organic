@@ -14,7 +14,24 @@ connectDB();
 const app = express();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-app.use(cors({ origin: process.env.CLIENT_URL || '*' }));
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  "https://gks-organic-lovr.vercel.app",
+  "https://gks-organic-lovr-6w6203a6v-rohitkumarsah-9934s-projects.vercel.app",
+  "http://localhost:5173"
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 app.use(express.json());
 
 app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));
