@@ -18,7 +18,7 @@ import Quality from "../Images/Quality.jpeg";
 import Health from "../Images/Health.jpeg";
 import ecoImg from "../Images/Eco.jpeg";
 import AboutImage from "../Images/AboutImage.jpeg";
-import SupperfoodImage from "../Images/Supperfood.jpeg";
+import SupperfoodImage from "../Images/SupperFood.jpeg";
 import mobileBannerImage from "../Images/SupperFoodMobile.jpeg";
 
 const highlights = [
